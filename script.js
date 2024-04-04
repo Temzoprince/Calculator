@@ -7,7 +7,6 @@ Create a Calculator
  */
 
 // Calculator Buttons array
-
 const buttonsArr = [
   "7",
   "4",
@@ -27,6 +26,7 @@ const buttonsArr = [
   "+",
 ];
 
+//Function to create grid
 function createGrid(gridSize, element) {
   const grid = document.querySelector(element);
   for (i = 1, arr = 0; i <= gridSize; i++) {
@@ -46,9 +46,6 @@ function createGrid(gridSize, element) {
   }
 }
 
-// 4x4 Grid for the calculator buttons
-createGrid(4, ".lower");
-
 // Function to display text on calculator
 displayTextSpan = document.querySelector(".display-text");
 let addTextToDisplay = function (text, update) {
@@ -58,12 +55,7 @@ let addTextToDisplay = function (text, update) {
   return displayTextSpan.textContent = text;
 };
 
-console.log(addTextToDisplay('hello', false))
-
-ans = 'hello';
-
 // Function to populate display when buttons clicked
-
 let numberButtonsUpdateDisplay = function(btnNumber) {
   let number = document.querySelector(`.btn-${btnNumber}`)
 
@@ -78,8 +70,15 @@ let numberButtonsUpdateDisplay = function(btnNumber) {
   })
 }
 
-for (i = 0; i < 10; i++) {
-  numberButtonsUpdateDisplay(i)
+let addBtnCallAdd = function() {
+  let addBtn = document.querySelector(`.btn-+`)
+  addBtn.addEventListener('click', () => {
+    num1 = displayTextSpan.textContent
+    displayTextSpan.textContent = '';
+    displayValue = addTextToDisplay(`${btnNumber}`, true)
+    console.log(num1)
+    console.log(displayValue)
+  })
 }
 
 
@@ -126,3 +125,20 @@ const operate = (num1, num2, operator) => {
 };
 
 console.log(operate(3, 4, "*"));
+
+/*
+ * Calculator Operation
+ */
+
+// 4x4 Grid for the calculator buttons
+createGrid(4, ".lower");
+
+console.log(addTextToDisplay('hello', false))
+
+ans = 'hello';
+
+for (i = 0; i < 10; i++) {
+  numberButtonsUpdateDisplay(i)
+}
+
+addBtnCallAdd()
