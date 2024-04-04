@@ -1,10 +1,10 @@
-/** Styling for the Calculator layout */
-
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -14,111 +14,52 @@ body {
     justify-content: center;
 }
 
-.calc-container {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    max-width: 500px;
-    min-height: 500px;
+.calculator {
+    width: 200px;
+    height: 300px;
     border: solid;
-    border-width: 1px;
-    background: #555555;
-}
-
-.calc-body {
     display: flex;
-    flex: 1;
-    margin: 10px;
-    background: black;
     flex-direction: column;
 }
 
 .display {
     flex: 1;
-    margin: 10px;
-    background: #a0a0a0;
-    display: inline-flex;
-    justify-content: end;
-    align-items: end;
-    font-size: larger;
-    font-weight: bolder;
-    font-family:'digital-clock-font';
-    padding-right: 10px;
-    padding-bottom: 10px;
+    margin: 5px 8px;
+    margin: black;
+    border: solid;
+    display: flex;
+    flex-direction: column;
+}
+
+.screen-last,
+.screen-current {
+    flex: 1;
+    background-color: #EFEFEF;
+    text-align: end;
+    padding-right: 5px;
 }
 
 .buttons {
     flex: 3;
     display: flex;
-    flex-direction: column;
-    margin: 2px;
-    background: dodgerblue;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    margin-bottom: 2px;
+    
 }
 
-.upper {
-    flex: 1;
-    display: flex;
+button {
+    width: 45px;
+    height: 45px;
 }
 
-.upper-left,
-.upper-right {
-    flex: 1;
-    display: flex;
-    border: solid;
-    border-width: 1px;
+button.clear,
+button.delete {
+    width: 90px;
 }
 
 button.clear {
-    flex: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: large;
-    font-weight: bolder;
-    font-family:'digital-clock-font';
-    cursor: pointer;
-}
-
-.lower {
-    flex: 3;
-    display: flex;
-}
-
-/** Styling for the grid inside lower **/
-
-.lower > * {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.lower > * :hover {
-    background-color: #555555;
-    transition-duration: 0.4s;
-}
-
-.lower > * > * {
-    flex-shrink: 1;
-    flex-basis: 100%;
-    background: #217C7E;;
-    display: flex;
-    justify-content: center;
-    border: solid;
-    border-width: 1px;
-}
-
-/* @font-face{
-    font-family:'digital-clock-font';
-    src: url('http://www.1001fonts.com/digital+clock-fonts.html');
-   } */
-
-btn {
-    flex: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: large;
-    font-weight: bolder;
-    font-family:'digital-clock-font';
-    cursor: pointer;
+    margin-left: 5px;
 }
