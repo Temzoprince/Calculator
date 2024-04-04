@@ -3,12 +3,6 @@ Create a Calculator
 */
 
 /*
- * Dom manipulation for On Screen Calculator
- */
-
-//
-
-/*
  * Functionality of Calculator
  */
 
@@ -49,6 +43,15 @@ const operate = (num1, num2, operator) => {
     return divide(num1, num2);
   }
 };
+
+/*
+ * Dom manipulation for On Screen Calculator
+ */
+
+// Function for number buttons to affect display
+//
+
+// Function for operator buttons
 
 /*
  * Calculator Operation
