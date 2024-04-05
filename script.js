@@ -48,11 +48,40 @@ const operate = (num1, num2, operator) => {
  * Dom manipulation for On Screen Calculator
  */
 
+// Function to display text on calculator
+displayTextSpan = document.querySelector(".screen-current");
+let addTextToDisplay = function (text, update) {
+  if (update) {
+    return displayTextSpan.textContent += text;
+  }
+  return displayTextSpan.textContent = text;
+};
+
 // Function for number buttons to affect display
-//
+let numberButtonsUpdateDisplay = function(btnNumber) {
+  let number = document.querySelector(`.btn-${btnNumber}`)
+
+  number.addEventListener('click', () => {
+    if (displayTextSpan.textContent == ans) {
+      displayValue = addTextToDisplay(`${btnNumber}`, false)
+      console.log(displayValue)
+    } else {
+      displayValue = addTextToDisplay(`${btnNumber}`, true)
+      console.log(displayValue)
+    }
+  })
+}
 
 // Function for operator buttons
 
 /*
  * Calculator Operation
  */
+
+var ans;
+
+ans = 0;
+
+for (i = 0; i < 10; i++) {
+  numberButtonsUpdateDisplay(i)
+}
