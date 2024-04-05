@@ -20,6 +20,7 @@ body {
     border: solid;
     display: flex;
     flex-direction: column;
+    background: #a2bbcf;
 }
 
 .display {
@@ -37,6 +38,11 @@ body {
     background-color: #EFEFEF;
     text-align: end;
     padding-right: 5px;
+}
+
+.screen-last {
+    font-size: small;
+    padding-top: 2px;
 }
 
 .buttons {
@@ -58,6 +64,7 @@ button {
 button.clear,
 button.delete {
     width: 90px;
+    background: #c2d4b1;
 }
 
 button.clear {
