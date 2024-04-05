@@ -108,14 +108,14 @@ let deleteButton = function() {
   })
 }
 
-// Function for operator buttons
+// Function for Operator buttons
 let operatorButton = function() {
   let operatorBtn = document.querySelectorAll('.operator')
   console.log(operatorBtn)
 
   for (i = 0; i < operatorBtn.length; i++) {
-    currentOperator = operatorBtn[i]
-    currentOperator.addEventListener('click', (e) => {
+    currentOperatorBtn = operatorBtn[i]
+    currentOperatorBtn.addEventListener('click', (e) => {
       num1 = displayValue;
       console.log(`\n${num1}`)
       // clear screen using ans -- Add digit removes value if ans is equal to display value
@@ -125,23 +125,6 @@ let operatorButton = function() {
       calculationDisplay(`${num1} ${e.target.textContent}`)
     })
   }
-
-  // divideOperator = operatorBtn[0]
-  // divideOperator.addEventListener('click', (e) => {
-  //   num1 = displayValue;
-  //   console.log(`\n${num1}`)
-  //   // clear screen using ans -- Add digit removes value if ans is equal to display value
-  //   ans = num1
-  //   calculationDisplay(`${num1} ÷`)
-  //   operator = e.target.value;
-  //   console.log(operator)
-  // })
-
-  //multiply
-
-  //subtract
-
-  //add
 }
 
 /*
