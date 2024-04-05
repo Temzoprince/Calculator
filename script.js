@@ -21,11 +21,11 @@ const round = (n, dp) => {
   return Math.round(n * h) / h
 }
 
-const add = (a, b) => a + b;
+const add = (a, b) => round((a + b), 3);
 
-const subtract = (a, b) => a - b;
+const subtract = (a, b) => round((a - b), 3);
 
-const multiply = (a, b) => a * b;
+const multiply = (a, b) => round((a * b), 3);
 
 const divide = (a, b) => {
   if (b === 0) {
@@ -177,8 +177,25 @@ let equalsButton = function() {
     calculationDisplay(`${num1} ${operator} ${num2} =`)
     displayValue = addDigitToMainDisplay(`${ans}`, false)
     operator = ''
-  })
-  
+  }) 
+}
+
+// Function for Decimal button
+let decimalButton = function() {
+  let decimalBtn = document.querySelector('.decimal')
+  decimalBtn.addEventListener('click', () => {
+    if (ans == 'Error') {
+      return
+    }
+    if (ans == 0) {
+      displayValue = addDigitToMainDisplay('.', true)
+      ans = ' '
+    }
+    if (!displayValue.includes('.')) {
+      displayValue = addDigitToMainDisplay('.', true)
+      ans = ' '
+    }
+  }) 
 }
 
 /*
@@ -198,3 +215,5 @@ deleteButton()
 operatorButtons()
 
 equalsButton()
+
+decimalButton()
