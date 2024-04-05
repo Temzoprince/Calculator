@@ -93,6 +93,9 @@ let clearButton = function() {
     calculationDisplay('')
     displayValue = addDigitToMainDisplay(`0`, false)
     ans = 0;
+    num1 = ''
+    num2 = ''
+    operator = ''
   })
 }
 
@@ -110,7 +113,6 @@ let operatorButton = function() {
   let operatorBtn = document.querySelectorAll('.operator')
   console.log(operatorBtn)
 
-  //divide
   divideOperator = operatorBtn[0]
   divideOperator.addEventListener('click', (e) => {
     num1 = displayValue;
@@ -118,9 +120,19 @@ let operatorButton = function() {
     // clear screen using ans -- Add digit removes value if ans is equal to display value
     ans = num1
     calculationDisplay(`${num1} ÷`)
+    operator = e.target.value;
+    console.log(operator)
   })
 
   //multiply
+  multiplyOperator = operatorBtn[0]
+  multiplyOperator.addEventListener('click', (e) => {
+    num1 = displayValue;
+    console.log(`\n${num1}`)
+    // clear screen using ans -- Add digit removes value if ans is equal to display value
+    ans = num1
+    calculationDisplay(`${num1} ÷`)
+  })
 
   //subtract
 
