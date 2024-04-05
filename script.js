@@ -11,8 +11,8 @@ Create a Calculator
 let num1;
 let num2;
 let operator;
-var ans;
-var displayValue;
+let ans;
+let displayValue;
 
 // Basic operations function
 
@@ -50,11 +50,16 @@ const operate = (num1, num2, operator) => {
 
 // Function to display text on calculator
 displayTextSpan = document.querySelector(".screen-current");
-let addDigitToDisplay = function (text, update) {
+let addDigitToMainDisplay = function (text, update) {
   if (update) {
     return displayTextSpan.textContent += text;
   }
   return displayTextSpan.textContent = text;
+};
+
+calculationTextSpan = document.querySelector(".screen-last");
+let calculationDisplay = function (text) {
+    return calculationTextSpan.textContent = text;
 };
 
 let removeLastDigitFromDisplay = function () {
@@ -71,10 +76,10 @@ let numberButtonsUpdateDisplay = function(btnNumber) {
 
   number.addEventListener('click', () => {
     if (displayTextSpan.textContent == ans) {
-      displayValue = addDigitToDisplay(`${btnNumber}`, false)
+      displayValue = addDigitToMainDisplay(`${btnNumber}`, false)
       console.log(displayValue)
     } else {
-      displayValue = addDigitToDisplay(`${btnNumber}`, true)
+      displayValue = addDigitToMainDisplay(`${btnNumber}`, true)
       console.log(displayValue)
     }
   })
@@ -85,7 +90,8 @@ let clearButton = function() {
   let clear = document.querySelector('.clear')
 
   clear.addEventListener('click', () => {
-    displayValue = addDigitToDisplay(`0`, false)
+    calculationDisplay('')
+    displayValue = addDigitToMainDisplay(`0`, false)
     ans = 0;
   })
 }
@@ -100,12 +106,30 @@ let deleteButton = function() {
 }
 
 // Function for operator buttons
+let operatorButton = function() {
+  let operatorBtn = document.querySelectorAll('.operator')
+  console.log(operatorBtn)
+
+  //divide
+  divideOperator = operatorBtn[0]
+  divideOperator.addEventListener('click', (e) => {
+    num1 = displayValue;
+    console.log(`\n${num1}`)
+    // clear screen using ans -- Add digit removes value if ans is equal to display value
+    ans = num1
+    calculationDisplay(`${num1} ÷`)
+  })
+
+  //multiply
+
+  //subtract
+
+  //add
+}
 
 /*
  * Calculator Operation
  */
-
-var ans;
 
 ans = 0;
 
@@ -116,3 +140,5 @@ for (i = 0; i < 10; i++) {
 clearButton()
 
 deleteButton()
+
+operatorButton()
