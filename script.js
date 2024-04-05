@@ -72,6 +72,19 @@ let numberButtonsUpdateDisplay = function(btnNumber) {
   })
 }
 
+// Function for Clear button
+let clearButton = function() {
+  let clear = document.querySelector('.clear')
+
+  clear.addEventListener('click', () => {
+    displayValue = addTextToDisplay(`0`, false)
+    ans = 0;
+  })
+}
+
+// Function for Delete button
+//
+
 // Function for operator buttons
 
 /*
@@ -85,3 +98,5 @@ ans = 0;
 for (i = 0; i < 10; i++) {
   numberButtonsUpdateDisplay(i)
 }
+
+clearButton()
