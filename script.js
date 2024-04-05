@@ -78,6 +78,9 @@ let numberButtonsUpdateDisplay = function(btnNumber) {
   let number = document.querySelector(`.btn-${btnNumber}`)
 
   number.addEventListener('click', () => {
+    if (ans == 'Error') {
+      return
+    }
     if (displayTextSpan.textContent == ans) {
       displayValue = addDigitToMainDisplay(`${btnNumber}`, false)
       console.log(displayValue)
@@ -107,6 +110,9 @@ let deleteButton = function() {
   let delBtn = document.querySelector('.delete')
 
   delBtn.addEventListener('click', () => {
+    if (ans == 'Error') {
+      return
+    }
     displayValue = removeLastDigitFromDisplay()
   })
 }
@@ -119,19 +125,26 @@ let operatorButtons = function() {
   for (i = 0; i < operatorBtn.length; i++) {
     currentOperatorBtn = operatorBtn[i]
     currentOperatorBtn.addEventListener('click', (e) => {
+      if (ans == 'Error') {
+        return
+      }
       if (!(operator == '')) {
         console.log(`\n num1 is ${num1}`)
         num2 = displayValue
         console.log(`\n num2 is ${num2}`)
-        operator = e.target.value
         ans = operate(num1, num2, operator)
         console.log('answer is ' + ans)
+        operator = e.target.value
+        if (ans == 'Error') {
+          calculationDisplay('')
+          displayValue = addDigitToMainDisplay(`${ans}`, false)
+          return
+        }
         calculationDisplay(`${ans} ${e.target.textContent}`)
         displayValue = addDigitToMainDisplay(`${ans}`, false)
       }
       num1 = displayValue;
       console.log(`\n num1 is ${num1}`)
-      // clear screen using ans -- Add digit removes value if ans is equal to display value
       ans = num1
       operator = e.target.value
       console.log('operator is ' + operator)
@@ -144,6 +157,9 @@ let operatorButtons = function() {
 let equalsButton = function() {
   let equalsBtn = document.querySelector('.equals')
   equalsBtn.addEventListener('click', () => {
+    if (ans == 'Error') {
+      return
+    }
     num2 = displayValue
     console.log(`\n num2 is ${num2}`)
     ans = operate(num1, num2, operator)
