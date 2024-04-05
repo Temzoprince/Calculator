@@ -50,11 +50,19 @@ const operate = (num1, num2, operator) => {
 
 // Function to display text on calculator
 displayTextSpan = document.querySelector(".screen-current");
-let addTextToDisplay = function (text, update) {
+let addDigitToDisplay = function (text, update) {
   if (update) {
     return displayTextSpan.textContent += text;
   }
   return displayTextSpan.textContent = text;
+};
+
+let removeLastDigitFromDisplay = function () {
+  if (!(displayValue = '')) {
+    let currentDisplayNumber =  displayTextSpan.textContent;
+    let newDisplayNumber = currentDisplayNumber.slice(0, currentDisplayNumber.length - 1)
+    return displayTextSpan.textContent = newDisplayNumber
+  }
 };
 
 // Function for number buttons to affect display
@@ -63,10 +71,10 @@ let numberButtonsUpdateDisplay = function(btnNumber) {
 
   number.addEventListener('click', () => {
     if (displayTextSpan.textContent == ans) {
-      displayValue = addTextToDisplay(`${btnNumber}`, false)
+      displayValue = addDigitToDisplay(`${btnNumber}`, false)
       console.log(displayValue)
     } else {
-      displayValue = addTextToDisplay(`${btnNumber}`, true)
+      displayValue = addDigitToDisplay(`${btnNumber}`, true)
       console.log(displayValue)
     }
   })
@@ -77,13 +85,19 @@ let clearButton = function() {
   let clear = document.querySelector('.clear')
 
   clear.addEventListener('click', () => {
-    displayValue = addTextToDisplay(`0`, false)
+    displayValue = addDigitToDisplay(`0`, false)
     ans = 0;
   })
 }
 
 // Function for Delete button
-//
+let deleteButton = function() {
+  let del = document.querySelector('.delete')
+
+  del.addEventListener('click', () => {
+    displayValue = removeLastDigitFromDisplay()
+  })
+}
 
 // Function for operator buttons
 
@@ -100,3 +114,5 @@ for (i = 0; i < 10; i++) {
 }
 
 clearButton()
+
+deleteButton()
