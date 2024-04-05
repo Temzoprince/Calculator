@@ -113,26 +113,31 @@ let operatorButton = function() {
   let operatorBtn = document.querySelectorAll('.operator')
   console.log(operatorBtn)
 
-  divideOperator = operatorBtn[0]
-  divideOperator.addEventListener('click', (e) => {
-    num1 = displayValue;
-    console.log(`\n${num1}`)
-    // clear screen using ans -- Add digit removes value if ans is equal to display value
-    ans = num1
-    calculationDisplay(`${num1} ÷`)
-    operator = e.target.value;
-    console.log(operator)
-  })
+  for (i = 0; i < operatorBtn.length; i++) {
+    currentOperator = operatorBtn[i]
+    currentOperator.addEventListener('click', (e) => {
+      num1 = displayValue;
+      console.log(`\n${num1}`)
+      // clear screen using ans -- Add digit removes value if ans is equal to display value
+      ans = num1
+      operator = e.target.value;
+      console.log(operator)
+      calculationDisplay(`${num1} ${e.target.textContent}`)
+    })
+  }
+
+  // divideOperator = operatorBtn[0]
+  // divideOperator.addEventListener('click', (e) => {
+  //   num1 = displayValue;
+  //   console.log(`\n${num1}`)
+  //   // clear screen using ans -- Add digit removes value if ans is equal to display value
+  //   ans = num1
+  //   calculationDisplay(`${num1} ÷`)
+  //   operator = e.target.value;
+  //   console.log(operator)
+  // })
 
   //multiply
-  multiplyOperator = operatorBtn[0]
-  multiplyOperator.addEventListener('click', (e) => {
-    num1 = displayValue;
-    console.log(`\n${num1}`)
-    // clear screen using ans -- Add digit removes value if ans is equal to display value
-    ans = num1
-    calculationDisplay(`${num1} ÷`)
-  })
 
   //subtract
 
