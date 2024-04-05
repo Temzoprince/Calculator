@@ -10,7 +10,7 @@ Create a Calculator
 
 let num1;
 let num2;
-let operator;
+let operator = '';
 let ans;
 let displayValue;
 
@@ -33,6 +33,8 @@ const divide = (a, b) => {
 //Operate function
 
 const operate = (num1, num2, operator) => {
+  num1 = +num1;
+  num2 = +num2
   if (operator == "+") {
     return add(num1, num2);
   } else if (operator == "-") {
@@ -50,6 +52,7 @@ const operate = (num1, num2, operator) => {
 
 // Function to display text on calculator
 displayTextSpan = document.querySelector(".screen-current");
+mainDisplayText = displayTextSpan.textContent;
 let addDigitToMainDisplay = function (text, update) {
   if (update) {
     return displayTextSpan.textContent += text;
@@ -87,9 +90,9 @@ let numberButtonsUpdateDisplay = function(btnNumber) {
 
 // Function for Clear button
 let clearButton = function() {
-  let clear = document.querySelector('.clear')
+  let clearBtn = document.querySelector('.clear')
 
-  clear.addEventListener('click', () => {
+  clearBtn.addEventListener('click', () => {
     calculationDisplay('')
     displayValue = addDigitToMainDisplay(`0`, false)
     ans = 0;
@@ -101,15 +104,15 @@ let clearButton = function() {
 
 // Function for Delete button
 let deleteButton = function() {
-  let del = document.querySelector('.delete')
+  let delBtn = document.querySelector('.delete')
 
-  del.addEventListener('click', () => {
+  delBtn.addEventListener('click', () => {
     displayValue = removeLastDigitFromDisplay()
   })
 }
 
 // Function for Operator buttons
-let operatorButton = function() {
+let operatorButtons = function() {
   let operatorBtn = document.querySelectorAll('.operator')
   console.log(operatorBtn)
 
@@ -117,14 +120,29 @@ let operatorButton = function() {
     currentOperatorBtn = operatorBtn[i]
     currentOperatorBtn.addEventListener('click', (e) => {
       num1 = displayValue;
-      console.log(`\n${num1}`)
+      console.log(`\n num1 is ${num1}`)
       // clear screen using ans -- Add digit removes value if ans is equal to display value
       ans = num1
-      operator = e.target.value;
-      console.log(operator)
+      operator = e.target.value
+      console.log('operator is ' + operator)
       calculationDisplay(`${num1} ${e.target.textContent}`)
     })
   }
+}
+
+// Function for Equals button
+let equalsButton = function() {
+  let equalsBtn = document.querySelector('.equals')
+  equalsBtn.addEventListener('click', () => {
+    num2 = displayValue
+    console.log(`\n num2 is ${num2}`)
+    ans = operate(num1, num2, operator)
+    console.log('answer is ' + ans)
+    calculationDisplay(`${num1} ${operator} ${num2} =`)
+    displayValue = addDigitToMainDisplay(`${ans}`, false)
+    operator = ''
+  })
+  
 }
 
 /*
@@ -141,4 +159,6 @@ clearButton()
 
 deleteButton()
 
-operatorButton()
+operatorButtons()
+
+equalsButton()
