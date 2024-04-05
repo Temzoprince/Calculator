@@ -16,6 +16,11 @@ let displayValue;
 
 // Basic operations function
 
+const round = (n, dp) => {
+  const h = +('1'.padEnd(dp + 1, '0')) // 10 or 100 or 1000 or etc
+  return Math.round(n * h) / h
+}
+
 const add = (a, b) => a + b;
 
 const subtract = (a, b) => a - b;
@@ -27,7 +32,12 @@ const divide = (a, b) => {
     return "Error";
   }
 
-  return a / b;
+  let c = a / b
+
+  c = round(c, 3)
+  console.log(c)
+
+  return c;
 };
 
 //Operate function
@@ -157,7 +167,7 @@ let operatorButtons = function() {
 let equalsButton = function() {
   let equalsBtn = document.querySelector('.equals')
   equalsBtn.addEventListener('click', () => {
-    if (ans == 'Error') {
+    if (ans == 'Error' || operator == '') {
       return
     }
     num2 = displayValue
