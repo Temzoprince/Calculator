@@ -119,6 +119,16 @@ let operatorButtons = function() {
   for (i = 0; i < operatorBtn.length; i++) {
     currentOperatorBtn = operatorBtn[i]
     currentOperatorBtn.addEventListener('click', (e) => {
+      if (!(operator == '')) {
+        console.log(`\n num1 is ${num1}`)
+        num2 = displayValue
+        console.log(`\n num2 is ${num2}`)
+        operator = e.target.value
+        ans = operate(num1, num2, operator)
+        console.log('answer is ' + ans)
+        calculationDisplay(`${ans} ${e.target.textContent}`)
+        displayValue = addDigitToMainDisplay(`${ans}`, false)
+      }
       num1 = displayValue;
       console.log(`\n num1 is ${num1}`)
       // clear screen using ans -- Add digit removes value if ans is equal to display value
